@@ -15,8 +15,8 @@ Before you start, make sure you have the following installed:
 ## Project Setup
 1. **Clone the repository:**
 ```sh
-git clone https://github.com/Lazar4o/GameOfLife.git
-cd GameOfLife
+git clone https://github.com/Lazar4o/Game-of-Life.git
+cd Game-Of-Life
 ```
 2. **Install dependencies:**
 ```sh
