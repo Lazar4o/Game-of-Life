@@ -15,22 +15,18 @@ Before you start, make sure you have the following installed:
 ## Project Setup
 1. **Clone the repository:**
 ```sh
-git clone https://github.com/Lazar4o/Weather-App.git
-cd Weather-App
+git clone https://github.com/YourUsername/GameOfLife.git
+cd GameOfLife
 ```
 2. **Install dependencies:**
 ```sh
 npm install
 ```
-3. **Environment Configuration:**
-- Obtain an API key from your weather data provider - https://openweathermap.org and ensure it is included in your project settings or .env file.
-### Compile and Hot-Reload for Development
-
-4. **Start the development server:**
+3. **Start the development server:**
 ```sh
 npx expo start --clear
 ```
-5. **Scan the QR code with Expo Go:**
+4. **Scan the QR code with Expo Go:**
 - Open the Expo Go app on your mobile device and scan the QR code provided in the terminal to run the app on your device.
   
 ## Usage
