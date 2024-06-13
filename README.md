@@ -31,13 +31,13 @@ npx expo start --clear
   
 ## Usage
 
-### ** The Game of Life app allows you to: **
+### **The Game of Life app allows you to:**
 - Interact with a 20x20 grid of cells.
 - Toggle cell states between alive and dead before starting the simulation.
 - Start, pause, and reset the simulation.
 - (BONUS) Randomize the initial state of the grid.
 
-### ** Rules of the Game of Life: **
+### **Rules of the Game of Life:**
 1. Any live cell with fewer than two live neighbors dies (underpopulation).
 2. Any live cell with two or three live neighbors lives on to the next generation.
 3. Any live cell with more than three live neighbors dies (overpopulation).
