@@ -1,26 +1,25 @@
-import React from "react";
+import React, { FC, useMemo } from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { useGameOfLifeContext } from "../../contexts/GameOfLifeContext";
+import GridCell from "../GridCell/GridCell";
 
-interface GridProps {
-  grid: number[][];
-  toggleCellState: (row: number, col: number) => void;
-  isDisabled: boolean;
-}
+const Grid: FC = () => {
+  const { grid, isInitialState, toggleCellState } = useGameOfLifeContext();
 
-const Grid = ({ grid, toggleCellState, isDisabled }: GridProps) => {
+  const isDisabled = useMemo(() => !isInitialState ?? false, [isInitialState]);
+
   return (
     <View style={styles.grid}>
       {grid.map((row, rowIndex) => (
         <View key={rowIndex} style={styles.row}>
           {row.map((cell, colIndex) => (
-            <TouchableOpacity
-              disabled={isDisabled}
+            <GridCell
               key={colIndex}
-              style={[
-                styles.cell,
-                { backgroundColor: cell ? "black" : "white" }
-              ]}
-              onPress={() => toggleCellState(rowIndex, colIndex)}
+              cell={cell}
+              rowIndex={rowIndex}
+              colIndex={colIndex}
+              isDisabled={isDisabled}
+              toggleCellState={toggleCellState}
             />
           ))}
         </View>
