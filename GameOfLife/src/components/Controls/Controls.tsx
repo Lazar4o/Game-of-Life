@@ -2,6 +2,8 @@ import React, { FC, useCallback } from "react";
 import { View, StyleSheet } from "react-native";
 import { useGameOfLifeContext } from "../../contexts/GameOfLifeContext";
 import ActionButton from "../ActionButton/ActionButton";
+import throttle from "lodash/throttle";
+import debounce from "lodash/debounce";
 
 const Controls: FC = () => {
   const {
@@ -12,10 +14,27 @@ const Controls: FC = () => {
     setIsInitialState
   } = useGameOfLifeContext();
 
-  const handleStartStop = useCallback(() => {
-    setRunning(!running);
-    setIsInitialState(false);
-  }, [running]);
+  const handleStartStop = useCallback(
+    throttle(() => {
+      setRunning(!running);
+      setIsInitialState(false);
+    }, 300),
+    [running]
+  );
+
+  const handleReset = useCallback(
+    debounce(() => {
+      resetGrid();
+    }, 100),
+    [resetGrid]
+  );
+
+  const handleRandomize = useCallback(
+    debounce(() => {
+      randomizeGridState();
+    }, 100),
+    [randomizeGridState]
+  );
 
   return (
     <View style={styles.controls}>
@@ -23,8 +42,8 @@ const Controls: FC = () => {
         text={running ? "Stop" : "Start"}
         onPress={handleStartStop}
       />
-      <ActionButton text="Reset" onPress={resetGrid} />
-      <ActionButton text="Randomize" onPress={randomizeGridState} />
+      <ActionButton text="Reset" onPress={handleReset} />
+      <ActionButton text="Randomize" onPress={handleRandomize} />
     </View>
   );
 };
